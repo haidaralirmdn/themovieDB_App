@@ -22,13 +22,18 @@ import com.dzakdzaks.movieLocals.R;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TvShowFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private ProgressBar progressBar;
+
+    @BindView(R.id.rvTvShow)
+    RecyclerView recyclerView;
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
     private TvShowAdapter adapter;
     private TvShowViewModel viewModel;
     private List<TvShowLocal> tvShowLocals;

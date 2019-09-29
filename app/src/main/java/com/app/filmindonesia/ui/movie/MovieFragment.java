@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.app.filmindonesia.data.local.entity.MovieLocal;
 import com.app.filmindonesia.viewmodel.ViewModelFactory;
 import com.dzakdzaks.movieLocals.BuildConfig;
@@ -23,13 +22,18 @@ import com.dzakdzaks.movieLocals.R;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MovieFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private ProgressBar progressBar;
+
+    @BindView(R.id.rvMovie)
+    RecyclerView recyclerView;
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
     private MovieAdapter adapter;
     private MovieViewModel viewModel;
     private List<MovieLocal> movieLocals;

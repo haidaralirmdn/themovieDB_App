@@ -27,27 +27,48 @@ import com.dzakdzaks.movieLocals.R;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_MOVIE = "extra_movie";
-    private Toolbar toolbar;
-    private AppBarLayout appBarLayout;
-    private CollapsingToolbarLayout collapsingToolbarLayout;
-    private ImageView imgThumb;
-    private ImageView imgPoster;
-    private TextView txtTitle;
-    private TextView txtOriginTitle;
-    private TextView txtReleaseDate;
-    private TextView txtVoteAverage;
-    private TextView txtCountry;
-    private TextView txtOverview;
+    @BindView(R.id.imgThumb)
+    ImageView imgThumb;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.appbar)
+    AppBarLayout appBarLayout;
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
+    @BindView(R.id.imgPoster)
+    ImageView imgPoster;
+    @BindView(R.id.textTitle)
+    TextView txtTitle;
+    @BindView(R.id.textOriginalTitle)
+    TextView txtOriginTitle;
+    @BindView(R.id.textReleaseDate)
+    TextView txtReleaseDate;
+    @BindView(R.id.textCategory)
+    TextView voteAverage;
+    @BindView(R.id.textVoteAverage)
+    TextView txtVoteAverage;
+    @BindView(R.id.Country)
+    TextView country;
+    @BindView(R.id.textCountry)
+    TextView txtCountry;
+    @BindView(R.id.textOverview)
+    TextView txtOverview;
     private DetailViewModel viewModel;
-    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
         viewModel = obtainViewModel(this);
         setInit();
         setupActionBar();
@@ -62,12 +83,12 @@ public class DetailActivity extends AppCompatActivity {
             }
         }
 
-        viewModel.getDetailMovie().observe(this, movieLocal ->{
-                    if (movieLocal != null) {
-                        progressBar.setVisibility(View.GONE);
-                        showMovie(movieLocal);
-                    }
-                });
+        viewModel.getDetailMovie().observe(this, movieLocal -> {
+            if (movieLocal != null) {
+                progressBar.setVisibility(View.GONE);
+                showMovie(movieLocal);
+            }
+        });
 
 
     }

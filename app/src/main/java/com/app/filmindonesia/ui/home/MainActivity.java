@@ -11,17 +11,24 @@ import com.app.filmindonesia.ui.tvshow.TvShowFragment;
 import com.dzakdzaks.movieLocals.R;
 import com.google.android.material.tabs.TabLayout;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.tabLayout)
+    TabLayout tabLayout;
+    @BindView(R.id.viewPager)
+    ViewPager viewPager;
     private TabAdapter adapter;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         toolbar = findViewById(R.id.toolbar);
         viewPager = findViewById(R.id.viewPager);
